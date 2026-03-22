@@ -1,0 +1,27 @@
+### Phase 1 : Base de Données et Configuration
+* **Étape 1.1 :** Copilot, fournis-moi le code XML pour la dépendance `mysql-connector-java` à ajouter dans mon fichier `pom.xml`.
+* **Étape 1.2 :** Génère un script SQL complet pour créer une base de données nommée `ebiblio_db`. Crée trois tables relationnelles : `Adherents`, `Livres`, et `Emprunts`. Intègre les contraintes suivantes :
+    * Types d'adhérents : ÉTUDIANT, ENSEIGNANT, VISITEUR.
+    * Types de livres : SCIENTIFIQUE, LITTERAIRE.
+    * Clés primaires et étrangères pour lier les emprunts aux livres et aux adhérents.
+* **Étape 1.3 :** Crée une classe `DatabaseConnection` dans le package `com.ebiblio.config`. Utilise le design pattern **Singleton** pour gérer la connexion à MySQL de manière sécurisée et unique.
+
+### Phase 2 : Couche d'Accès aux Données (Pattern DAO)
+* **Étape 2.1 :** Dans le package `com.ebiblio.dao`, définis trois interfaces : `LivreDAO`, `AdherentDAO` et `EmpruntDAO`. Elles doivent lister uniquement les méthodes CRUD standards (ajouter, modifier, supprimer par identifiant, et lister).
+* **Étape 2.2 :** Génère les classes d'implémentation (ex: `LivreDAOImpl`) pour ces interfaces. Utilise des `PreparedStatement` pour exécuter les requêtes SQL (INSERT, UPDATE, DELETE, SELECT) directement sur la base de données.
+
+### Phase 3 : Logique Métier (Le Contrôleur)
+* **Étape 3.1 :** Mets à jour la classe `GestionBibliotheque` dans `com.ebiblio.service`. Supprime toutes les listes `ArrayList` en mémoire et remplace-les par des appels aux méthodes des objets DAO créés précédemment.
+* **Étape 3.2 :** Modifie la méthode de détection des retards. Le système doit maintenant exécuter une requête SQL spécifique pour identifier les fiches d'emprunt dont la date limite est dépassée par rapport à la date du jour.
+
+### Phase 4 : Interface Graphique (La Vue Globale)
+* **Étape 4.1 :** Crée le package `com.ebiblio.view` et génère une classe `MainFrame` héritant de `JFrame`. Applique un design minimaliste avec une barre latérale (Sidebar) pour naviguer entre quatre onglets : **Livres**, **Adhérents**, **Emprunts** et **Tableau de bord**.
+
+### Phase 5 : Les Vues Spécifiques
+* **Étape 5.1 :** Crée la classe `AdherentPanel`. Elle doit afficher un tableau `JTable` avec la liste des membres et inclure un formulaire dédié à l'ajout, la modification et la suppression d'un adhérent via son identifiant.
+* **Étape 5.2 :** Crée la classe `LivrePanel` sur le même modèle que le panel précédent pour servir d'inventaire complet des documents.
+* **Étape 5.3 :** Crée la classe `EmpruntPanel`. Utilise des `JComboBox` (listes déroulantes) alimentées par la base de données pour permettre la sélection facile d'un adhérent et d'un livre lors de la création d'un prêt.
+
+### Phase 6 : Câblage et Actualisation
+* **Étape 6.1 :** Ajoute des `ActionListener` sur tous les boutons d'action (Sauvegarder, Supprimer, etc.) de chaque panel pour qu'ils appellent les méthodes correspondantes dans `GestionBibliotheque`.
+* **Étape 6.2 :** Implémente une logique de rafraîchissement automatique. Chaque fois qu'une modification (ajout ou suppression) est validée en base de données, les tableaux `JTable` des interfaces doivent être immédiatement mis à jour pour refléter les nouvelles données.

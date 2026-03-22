@@ -1,0 +1,92 @@
+## Phase 1 : Initialisation et Modèles de Données (Les briques)
+
+Demande à Copilot de générer les classes de base (modèles) avec leurs attributs et constructeurs.
+
+* 
+**Instruction 1 :** "Crée une classe `Livre` avec les attributs suivants : titre, type (énumération : scientifique, littéraire), auteur, éditeur, date d'édition, code unique (String) et nombre d'exemplaires. Ajoute les getters/setters et une méthode `toString()` pour afficher ses caractéristiques."
+
+
+* 
+**Instruction 2 :** "Crée une classe `Adherent` avec : nom, prénom, identifiant unique, adresse et type (énumération : ETUDIANT, ENSEIGNANT, VISITEUR). Ajoute des compteurs pour le nombre d'emprunts effectués, en cours et dépassés."
+
+
+* **Instruction 3 :** "Crée une classe `FicheEmprunt` qui lie un `Adherent` à un `Livre`. Elle doit contenir : la date de début, la date limite de restitution et le livre concerné."
+
+
+
+---
+
+## Phase 2 : Logique Métier et Contraintes (Le cerveau)
+
+C'est ici que tu définis les règles de gestion du projet eBiblio.
+
+* **Instruction 4 :** "Dans la classe `Adherent`, implémente une méthode pour vérifier si l'utilisateur peut emprunter. Les règles sont :
+* Maximum de 2 livres pour un Étudiant, 4 pour un Enseignant, 1 pour un Visiteur.
+
+
+* Si le nombre max est atteint, le prêt est impossible.
+
+
+* Si l'adhérent a un emprunt en retard (date limite dépassée), tout nouveau prêt est bloqué."
+
+
+
+
+* 
+**Instruction 5 :** "Crée une méthode pour calculer la date limite de restitution lors de la création d'une `FicheEmprunt` : 1 semaine pour les Étudiants et Visiteurs, 3 semaines pour les Enseignants."
+
+
+
+---
+
+## Phase 3 : Gestion du Système (Le moteur)
+
+Ici, on gère les listes et les actions globales.
+
+* 
+**Instruction 6 :** "Crée une classe `Bibliotheque` qui gère une liste de `Livres`, une liste d' `Adherents` et une liste de `FichesEmprunt`. Ajoute les fonctionnalités suivantes :
+
+
+* Ajout de membres et de livres en respectant l'ordre des identifiants.
+
+
+* Suppression et modification via l'identifiant.
+
+
+* Recherche par type (adhérent ou livre).
+
+
+* Une méthode `verifierRetards()` qui parcourt les fiches chaque jour pour marquer les retardataires."
+
+
+
+
+
+---
+
+## Phase 4 : Inventaires et Statistiques (Le reporting)
+
+Pour finaliser la partie "données" du projet.
+
+* **Instruction 7 :** "Ajoute des méthodes d'inventaire pour :
+* Éditer la liste complète des documents (livres).
+
+
+* Éditer la liste complète des adhérents.
+
+
+* Afficher le nombre total d'emprunts effectués pour chaque document afin d'obtenir des statistiques d'utilisation."
+
+
+
+
+
+---
+
+## Phase 5 : Interface Utilisateur (Le pilotage)
+
+Enfin, demande-lui de créer un menu simple pour tester tout ça.
+
+* 
+**Instruction 8 :** "Crée une classe `Main` avec un menu textuel (Switch case) permettant de tester toutes les fonctionnalités : ajouter un livre, inscrire un adhérent, réaliser un emprunt, et afficher les statistiques de la bibliothèque."
+

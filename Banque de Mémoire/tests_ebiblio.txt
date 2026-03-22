@@ -1,0 +1,71 @@
+Tests à effectuer pour valider le projet eBiblio
+Tests d'intégration Interface Graphique et Base de Données
+==========================================================
+
+1. Lancer MainFrame (via Main.java dans com.ebiblio.main).
+2. Vérifier que l'interface s'affiche correctement avec la barre latérale et les onglets.
+3. Effectuer chaque opération (ajout, modification, suppression, recherche, emprunt) via les panels graphiques.
+4. Vérifier que chaque action est bien répercutée dans la base de données (les tableaux JTable se mettent à jour instantanément).
+5. Tester la synchronisation :
+   - Ajouter un livre ou un adhérent via le formulaire, vérifier l'affichage immédiat dans le tableau.
+   - Modifier ou supprimer un élément, vérifier la mise à jour.
+   - Réaliser un emprunt, vérifier la date limite et la gestion des retards.
+   - Utiliser les JComboBox pour sélectionner adhérent et livre lors d'un emprunt.
+6. Tester les messages d'erreur et de confirmation affichés dans l'interface.
+7. Vérifier que les recherches par type fonctionnent via l'interface.
+8. Tester le rafraîchissement automatique des panels après chaque opération.
+
+=================================================
+
+1. Ajout de livres
+   - Ajouter un livre de chaque type (SCIENTIFIQUE, LITTERAIRE)
+   - Vérifier l'affichage de l'inventaire des livres
+
+2. Inscription d'adhérents
+   - Inscrire un adhérent de chaque type (ETUDIANT, ENSEIGNANT, VISITEUR)
+   - Vérifier l'affichage de l'inventaire des adhérents
+
+3. Emprunt de livres
+   - Réaliser un emprunt pour chaque type d'adhérent
+   - Vérifier la date limite de restitution selon le type
+   - Vérifier que le nombre d'emprunts en cours et effectués est mis à jour
+
+4. Limites d'emprunt
+   - Essayer d'emprunter plus que le maximum autorisé pour chaque type
+   - Vérifier que le message d'erreur s'affiche et que l'emprunt est bloqué
+
+5. Gestion des retards
+   - Simuler un emprunt dépassé (modifier la date limite dans le code)
+   - Vérifier que l'adhérent ne peut plus emprunter
+   - Vérifier la méthode de vérification des retards
+
+6. Modification et suppression
+   - Modifier un livre et un adhérent
+   - Supprimer un livre et un adhérent
+   - Vérifier que les listes sont mises à jour
+
+7. Recherche
+   - Rechercher des livres par type
+   - Rechercher des adhérents par type
+
+8. Statistiques
+   - Vérifier l'affichage du nombre total d'emprunts pour chaque livre
+
+9. Interface utilisateur
+   - Tester tous les choix du menu
+   - Vérifier les messages d'erreur et de confirmation
+
+
+Comment tester ?
+----------------
+1. Lance le programme Main.java (dans com.ebiblio.main).
+2. Utilise l'interface graphique pour effectuer chaque test décrit ci-dessus.
+3. Pour simuler un retard, modifie temporairement la date limite de restitution d'une fiche d'emprunt via le panel Emprunt ou dans la base.
+4. Vérifie les affichages dans les JTable et les messages de l'interface après chaque opération.
+5. Si tout fonctionne comme décrit, le projet est validé.
+
+Astuce :
+- Prends des notes sur les résultats de chaque test.
+- Si un test échoue, note le comportement et corrige le code concerné.
+
+Bonne validation !
